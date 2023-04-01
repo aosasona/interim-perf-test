@@ -55,12 +55,11 @@ func main() {
 			count++
 		}
 	}
-	end = time.Now()
-	duration = end.Sub(start)
+	duration = time.Since(start)
 
 	fmt.Printf("(forwards) Reading %d/%d items took %v\n", count, sampleSize, duration)
 
-	// Read - cached, read from the back
+	// Read - from the back
 	start = time.Now()
 	count = 0
 	for i := (sampleSize - 1); i >= 0; i-- {
@@ -70,8 +69,7 @@ func main() {
 			count++
 		}
 	}
-	end = time.Now()
-	duration = end.Sub(start)
+	duration = time.Since(start)
 
 	fmt.Printf("(backwards) Reading %d/%d items took %v\n", count, sampleSize, duration)
 
@@ -84,8 +82,7 @@ func main() {
 			count++
 		}
 	}
-	end = time.Now()
-	duration = end.Sub(start)
+	duration = time.Since(start)
 
 	fmt.Printf("Removing %d/%d items took %v\n", count, sampleSize, duration)
 
