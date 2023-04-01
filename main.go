@@ -20,14 +20,14 @@ func main() {
 	db := interim.New(interim.Config{CacheSize: cacheSize})
 
 	values := []string{
-		"Quis aliquet odio varius ut phasellus sit amet aliquam consectetur adipiscing elit ut aliquam sapien.",
+		"Quis aliquet odio various ut phasellus sit amet aliquam consectetur adipiscing elit ut aliquam sapien.",
 		"Maecenas consectetur diam sed diam viverra dignissim ut at lorem quisque dignissim sagittis aenean euismod elementum.",
 		"Ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
 		"Etiam auctor nibh ut hendrerit consectetur nisi lectus eget posuere mi hendrerit.",
 		"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam.",
-		"Nam fermentum augue vel turpis convallis ut interdum diam gravida nec ut enim.",
+		"Name fermentum augue vel turpis convallis ut interdum diam gravida nec ut enim.",
 		"Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec velit neque auctor sit amet.",
-		"Quisque cursus ante at mauris commodo euismod nam semper justo quis risus suscipit scelerisque.",
+		"Quisque cursus ante at mauris commodo euismod name semper justo quis risus suscipit scelerisque.",
 		"Nunc congue nisi sed justo sollicitudin euismod sed quis lectus sed mi.",
 		"Fusce et quam semper dignissim eget ac magna aliquet consectetur adipiscing elit.",
 	}
@@ -60,10 +60,10 @@ func main() {
 
 	fmt.Printf("(forwards) Reading %d/%d items took %v\n", count, sampleSize, duration)
 
-	// Read - cached, read from thr back
+	// Read - cached, read from the back
 	start = time.Now()
 	count = 0
-	for i := 0; i < sampleSize; i++ {
+	for i := (sampleSize - 1); i >= 0; i-- {
 		var result string
 		err := db.Get(fmt.Sprintf("%d", i), &result)
 		if err == nil {
@@ -75,7 +75,7 @@ func main() {
 
 	fmt.Printf("(backwards) Reading %d/%d items took %v\n", count, sampleSize, duration)
 
-	// Read - cached, read from thr back
+	// Delete
 	start = time.Now()
 	count = 0
 	for i := 0; i < sampleSize; i++ {
